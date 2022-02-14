@@ -8,16 +8,15 @@ This code has only ben tested on Windows 10, Python3 using an ion gauge all othe
 
 ### Driver only
 
-Pandas  
 PyVisa  
 PyVisa-py  
-Pandas  
 
 ### Widget
 
 Matplotlib  
 Seaborn  
 PyQt5  
+Pandas  
 
 # Usage
 
