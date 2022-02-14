@@ -6,14 +6,14 @@ This code has only ben tested on Windows 10, Python3 using an ion gauge all othe
 
 # Requirements
 
-## Driver only
+### Driver only
 
 Pandas  
 PyVisa  
 PyVisa-py  
 Pandas  
 
-## Widget
+### Widget
 
 Matplotlib  
 Seaborn  
