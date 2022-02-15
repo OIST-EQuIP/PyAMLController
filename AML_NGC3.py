@@ -13,6 +13,7 @@ class NGC3:
         self.port = rm.open_resource(address)
         self.delay = delay # This pauses after every command to to allow the ion gauge to not miss commands
         self.remote = True # If false, can only send poll and status commands
+        self._last_command = time.time()
 
     def __del__(self):
         self.port.close()
@@ -119,9 +120,9 @@ class NGC3:
     # convert to byte and send through pyvisa commands
     ################
     def write(self, string):
+        while time.time()-self._last_command < 0.1:
+            time.sleep(0.01)
         self.port.write_raw(bytes(string, 'ascii'))
-        if self.delay:
-            time.sleep(1)
 
     def read(self):
         return self.port.read_raw()
