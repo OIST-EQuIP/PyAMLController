@@ -123,6 +123,7 @@ class NGC3:
         while time.time()-self._last_command < 0.1:
             time.sleep(0.01)
         self.port.write_raw(bytes(string, 'ascii'))
+        self._last_command = time.time()
 
     def read(self):
         return self.port.read_raw()
