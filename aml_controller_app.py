@@ -13,7 +13,7 @@ from PyQt5 import uic
 from PyQt5 import QtCore as qtc
 
 
-UI_gauge_controller, baseClass = uic.loadUiType('UI/aml_pressure_gauge_widget.ui')
+UI_gauge_controller, baseClass = uic.loadUiType('aml_pressure_gauge_widget.ui')
 
 class IonGaugeController(baseClass, UI_gauge_controller):
 
