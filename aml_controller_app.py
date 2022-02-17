@@ -77,7 +77,7 @@ class IonGaugeController(baseClass, UI_gauge_controller):
             self.connect_button.setEnabled(False)
             self.disconnect_button.setEnabled(True)
             self.gauge_on_button.setEnabled(True)
-            self.gauge_off_button.setEnabled(False)
+            self.gauge_off_button.setEnabled(True)
             self.next_button.setEnabled(True)
             self.start_save_button.setEnabled(True)
             self.save_button.setEnabled(True)
@@ -118,14 +118,10 @@ class IonGaugeController(baseClass, UI_gauge_controller):
             # TODO: Make a pop-up warning for high current
             self.ion_gauge.current = 5
 
-        self.gauge_on_button.setEnabled(False)
-        self.gauge_off_button.setEnabled(True)
 
     def gauge_off(self):
         self.ion_gauge.gauge_off()
 
-        self.gauge_on_button.setEnabled(True)
-        self.gauge_off_button.setEnabled(False)
 
     def next_datum(self):
         print('Getting next datum')
@@ -176,32 +172,32 @@ class IonGaugeController(baseClass, UI_gauge_controller):
             time = self.data['Time']/(60*60*24)
 
         if self.ion_gauge_radio_button.isChecked():
-            self.gauge_on_plot = 'Ion Gauge'
+            self.gauge_plotted = 'Ion Gauge'
         if self.pirani_1_radio_button.isChecked():
-            self.gauge_on_plot = 'Pirani 1'
+            self.gauge_plotted = 'Pirani 1'
         if self.pirani_2_radio_button.isChecked():
-            self.gauge_on_plot = 'Pirani 2'
+            self.gauge_plotted = 'Pirani 2'
         if self.active_gauge_radio_button.isChecked():
-            self.gauge_on_plot = 'Active Gauge'
+            self.gauge_plotted = 'Active Gauge'
         if self.temperature_radio_button.isChecked():
-            self.gauge_on_plot = 'Temperature'
+            self.gauge_plotted = 'Temperature'
 
-        print(self.data[self.gauge_on_plot].iloc[0])
-        if not isinstance(self.data[self.gauge_on_plot].iloc[0], (int, float)):
+        print(self.data[self.gauge_plotted].iloc[0])
+        if not isinstance(self.data[self.gauge_plotted].iloc[0], (int, float)):
             self.stop()
 
-        if self.data.columns.get_loc(self.gauge_on_plot) in {1, 2, 3, 4}:
+        if self.data.columns.get_loc(self.gauge_plotted) in {1, 2, 3, 4}:
             y_quantity = "Pressure"
         else:
             y_quantity = "Temperature"
 
-        self.units_on_plot = self.units[self.data.columns.get_loc(self.gauge_on_plot)]
+        self.units_on_plot = self.units[self.data.columns.get_loc(self.gauge_plotted)]
 
         print('Plotting')
         self.plot_widget.cla()
         self.plot_widget.set_xlabel(time_units)
         self.plot_widget.set_ylabel(y_quantity, self.units_on_plot)
-        self.plot_widget.plot(time, self.data[self.gauge_on_plot])
+        self.plot_widget.plot(time, self.data[self.gauge_plotted])
         self.plot_widget.draw()
 
     def start_save(self):

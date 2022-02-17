@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>834</width>
-    <height>750</height>
+    <width>1017</width>
+    <height>754</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,22 +16,93 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>10</y>
-     <width>824</width>
+     <width>991</width>
      <height>731</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="0" rowspan="2">
-     <spacer name="verticalSpacer_2">
+    <item row="0" column="3">
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Plotted gauge</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="ion_gauge_radio_button">
+        <property name="text">
+         <string>Ion Gauge</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">plotted_gauge_button_gorup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="pirani_1_radio_button">
+        <property name="text">
+         <string>Pirani 1</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">plotted_gauge_button_gorup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="pirani_2_radio_button">
+        <property name="text">
+         <string>Pirani 2</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">plotted_gauge_button_gorup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="active_gauge_radio_button">
+        <property name="text">
+         <string>Active Gauge</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">plotted_gauge_button_gorup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="temperature_radio_button">
+        <property name="text">
+         <string>Temperature</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">plotted_gauge_button_gorup</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>0</width>
-        <height>148</height>
+        <width>10</width>
+        <height>394</height>
        </size>
       </property>
      </spacer>
@@ -328,103 +399,18 @@
       </item>
      </layout>
     </item>
-    <item row="2" column="0">
-     <spacer name="verticalSpacer">
+    <item row="0" column="0" rowspan="2">
+     <spacer name="verticalSpacer_2">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>10</width>
-        <height>394</height>
+        <width>0</width>
+        <height>148</height>
        </size>
       </property>
      </spacer>
-    </item>
-    <item row="2" column="1" colspan="6">
-     <widget class="MplWidget" name="plot_widget" native="true">
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <layout class="QVBoxLayout" name="verticalLayout_9">
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Plotted gauge</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="ion_gauge_radio_button">
-        <property name="text">
-         <string>Ion Gauge</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">plotted_gauge_button_gorup</string>
-        </attribute>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="pirani_1_radio_button">
-        <property name="text">
-         <string>Pirani 1</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">plotted_gauge_button_gorup</string>
-        </attribute>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="pirani_2_radio_button">
-        <property name="text">
-         <string>Pirani 2</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">plotted_gauge_button_gorup</string>
-        </attribute>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="active_gauge_radio_button">
-        <property name="text">
-         <string>Active Gauge</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">plotted_gauge_button_gorup</string>
-        </attribute>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="temperature_radio_button">
-        <property name="text">
-         <string>Temperature</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">plotted_gauge_button_gorup</string>
-        </attribute>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="2">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="Line" name="line_4">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
     </item>
     <item row="0" column="6">
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -480,6 +466,20 @@
       </item>
      </layout>
     </item>
+    <item row="0" column="4">
+     <widget class="Line" name="line_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="6">
+     <widget class="MplWidget" name="plot_widget" native="true">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
@@ -495,10 +495,9 @@
  <connections/>
  <buttongroups>
   <buttongroup name="current_button_group"/>
+  <buttongroup name="plotted_gauge_button_gorup"/>
   <buttongroup name="time_units_button_group"/>
-  <buttongroup name="single_series_button_group"/>
   <buttongroup name="filament_button_group"/>
   <buttongroup name="control_button_group"/>
-  <buttongroup name="plotted_gauge_button_gorup"/>
  </buttongroups>
 </ui>
