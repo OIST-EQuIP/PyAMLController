@@ -4,6 +4,10 @@ This is a Python driver and widget for the Arun Microelectronics LTD- Model NGC3
 
 This code has only ben tested on Windows 10, Python3 using an ion gauge all other gauges should function but have not been tested. If you test it on other operating systems, please let me know if it worked or not. The widget may not be very well written, improvements/suggestions are welcome.
 
+# Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 # Requirements
 
 ### Driver only
