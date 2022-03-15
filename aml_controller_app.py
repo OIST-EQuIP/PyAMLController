@@ -165,9 +165,9 @@ class IonGaugeController(baseClass, UI_gauge_controller):
         elif 60*5 <= self.data['Time'].iloc[-1] < 60*60*3:
             time_units = 'm'
             time = self.data['Time']/60
-        elif 60*60*3 <= self.data['Time'].iloc[-1] < 60*60*24*4:
+        elif 60*60*3 <= self.data['Time'].iloc[-1] < 60*60*24*2:
             time_units = 'h'
-            time = self.data['Time'].iloc[-1]/(60*60)
+            time = self.data['Time']/(60*60)
         else:
             time_units = 'd'
             time = self.data['Time']/(60*60*24)
