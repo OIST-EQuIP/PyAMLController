@@ -3,7 +3,7 @@ import time
 
 
 class NGC3:
-    # TODO set up connection and put in default setting values
+    # TODO set up connection and put in default setting values: call setters
     def __init__(self, rm, address, remote=True, filament=1, delay=True):
         self._remote = remote
         self._gauge_on = False
@@ -12,10 +12,10 @@ class NGC3:
 
         self.port = rm.open_resource(address)
         self.delay = delay # This pauses after every command to to allow the ion gauge to not miss commands
+        self._last_command_time = time.time()
         self.remote = True # If false, can only send poll and status commands
-        self._last_command = time.time()
 
-    def __del__(self):
+    def close(self):
         self.port.close()
 
     @property
@@ -24,6 +24,7 @@ class NGC3:
 
     @remote.setter
     def remote(self, value):
+        # TODO: make a try, exception
         self._remote = value
         if value:
             self.write('*C0')
@@ -36,7 +37,7 @@ class NGC3:
 
     @current.setter
     def current(self, value):
-        self._current = value
+        # TODO: make a try, exception
         if value == 0.5:
             self._gauge_on = True
             self.write('*i00')
@@ -49,6 +50,8 @@ class NGC3:
             self.write('*o0')
         else:
             print("Invalid current value. Choose 0, 0.5, 5 mA.")
+            value = self._current
+            self._current = value
 
     @property
     def filament(self):
@@ -56,12 +59,14 @@ class NGC3:
 
     @filament.setter
     def filament(self, value):
+        # TODO: make a try, exception
         if value in {1, 2}:
             self._filament = value
             self.write('*j0{}'.format(value))
         else:
             print("Invalid filament number. Must be 1 or 2.")
 
+    # TODO: This has returned whitespace up to now.
     def poll(self):
         self.write('*P0')
         return self.read()
@@ -73,7 +78,7 @@ class NGC3:
         self.write('*S0')
         strings = [self.read().decode("utf-8") for _ in range(5)]
         strings[0] = strings[0][4:]
-        strings = [string.rstrip('\r\n') for string in strings]
+        strings = [string.strip() for string in strings] # removed rstrip('\r\n')
         values = []
         units = []
         for string in strings:
@@ -120,10 +125,10 @@ class NGC3:
     # convert to byte and send through pyvisa commands
     ################
     def write(self, string):
-        while time.time()-self._last_command < 0.1:
+        while time.time()-self._last_command_time < 0.1:
             time.sleep(0.01)
         self.port.write_raw(bytes(string, 'ascii'))
-        self._last_command = time.time()
+        self._last_command_time = time.time()
 
     def read(self):
         return self.port.read_raw()

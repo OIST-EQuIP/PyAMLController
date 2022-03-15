@@ -15,6 +15,7 @@ from PyQt5 import QtCore as qtc
 
 UI_gauge_controller, baseClass = uic.loadUiType('aml_pressure_gauge_widget.ui')
 
+
 class IonGaugeController(baseClass, UI_gauge_controller):
 
     def __init__(self, *args, **kwargs):
@@ -85,7 +86,7 @@ class IonGaugeController(baseClass, UI_gauge_controller):
             print('No resource available')
 
     def disconnect(self):
-        self.ion_gauge.__del__()
+        self.ion_gauge.close()
         self.connect_button.setEnabled(True)
         self.disconnect_button.setEnabled(False)
         self.gauge_on_button.setEnabled(False)
@@ -182,7 +183,7 @@ class IonGaugeController(baseClass, UI_gauge_controller):
         if self.temperature_radio_button.isChecked():
             self.gauge_plotted = 'Temperature'
 
-        print(self.data[self.gauge_plotted].iloc[0])
+        # print(self.data[self.gauge_plotted].iloc[0])
         if not isinstance(self.data[self.gauge_plotted].iloc[0], (int, float)):
             self.stop()
 
@@ -312,6 +313,7 @@ class IonGaugeController(baseClass, UI_gauge_controller):
         self.plot_widget.set_xlabel('')
         self.plot_widget.set_ylabel('','')
         self.plot_widget.cla()
+        self.plot_widget.set_yscale_log()
         self.plot_widget.draw()
 
 

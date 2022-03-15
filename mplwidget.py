@@ -38,8 +38,11 @@ class MplWidget(QtWidgets.QWidget):
     def set_ylabel(self, y_quantity, y_units):
         self.canvas.axes.set_ylabel(y_quantity + ' (' + y_units + ')')
 
-    def plot(self, time, data, ):
+    def plot(self, time, data):
         self.canvas.axes.plot(time, data)
+
+    def set_yscale_log(self):
+        self.canvas.axes.set_yscale('log')
 
     def draw(self):
         self.canvas.draw()
